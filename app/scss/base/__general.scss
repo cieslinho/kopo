@@ -1,0 +1,17 @@
+@use '__variables' as *;
+
+html {
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.6rem;
+	font-family: 'Poppins', sans-serif;
+}
+
+a,
+button {
+	cursor: pointer;
+}
