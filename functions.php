@@ -27,4 +27,3 @@ function init_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'init_scripts' );
 
-

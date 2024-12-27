@@ -1,0 +1,364 @@
+@use 'base/__variables' as *;
+@use 'base/__mixins' as *;
+
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+
+	.container {
+		max-width: unset;
+
+		@include view(mobile) {
+			padding-inline: unset;
+		}
+	}
+
+	&__top {
+		display: none;
+
+		@include view(mobile) {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid $gray;
+
+			padding: 0.5em 2em;
+		}
+	}
+
+	&__navbar {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		@include view(mobile) {
+			padding: 0em 0em 0 2em;
+			height: 80px;
+		}
+	}
+
+	&__btn,
+	&__close {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 2px solid $dark;
+		border-radius: 50%;
+		padding: 0.3em;
+
+		svg {
+			width: 25px;
+			height: 25px;
+		}
+	}
+
+	&__btn {
+		@include view(mobile) {
+			display: none;
+		}
+	}
+
+	&__btns {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5em 1em;
+
+		p {
+			font-weight: 700;
+			font-size: 2rem;
+		}
+
+		@include view(mobile) {
+			display: none;
+		}
+	}
+
+	&__logo {
+		width: 160px;
+
+		@include view(mobile) {
+			width: 140px;
+		}
+	}
+
+	&__overlay {
+		position: fixed;
+		top: 0;
+		right: 0;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 99;
+		transition: all 0.3s;
+		background: rgba($color: $dark, $alpha: 0.8);
+		width: 100%;
+		height: 100%;
+
+		@include view(mobile) {
+			display: none;
+		}
+	}
+
+	&__overlay.active {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&__menu {
+		display: flex;
+		position: fixed;
+		top: 0;
+		right: 0;
+		flex-direction: column;
+		transform: translateX(100%);
+		visibility: hidden;
+		opacity: 0;
+		z-index: 100;
+		transition: all 0.3s;
+		background-color: $white;
+		width: 70vw;
+		height: 100%;
+		overflow-y: scroll;
+
+		@include view(mobile) {
+			position: unset;
+			align-items: stretch;
+			transform: unset;
+			visibility: unset;
+			opacity: unset;
+			width: unset;
+			height: 100%;
+			overflow-y: unset;
+		}
+
+		.nav__logo {
+			align-self: center;
+			margin-top: 3em;
+			width: 200px;
+
+			@include view(mobile) {
+				display: none;
+			}
+		}
+	}
+
+	&__submenu {
+		display: none;
+		visibility: hidden;
+		opacity: 0;
+		border-bottom: 2px solid $red;
+		pointer-events: none;
+
+		.nav__link {
+			transition: all 0.3s;
+			border-bottom: 1px solid $darkGray;
+			background-color: $gray;
+			font-weight: 400;
+			font-size: 1.5rem;
+			text-transform: unset;
+
+			&:hover {
+				color: $red;
+
+				@include view(mobile) {
+					padding-left: 1.5em;
+				}
+			}
+		}
+
+		.nav__item {
+			&:last-child {
+				.nav__link {
+					border-bottom: unset;
+				}
+			}
+		}
+
+		@include view(mobile) {
+			display: unset;
+			position: absolute;
+			top: auto;
+			right: auto;
+			z-index: 900;
+			transition: opacity 200ms ease-in, transform 200ms ease-in, visibility 200ms ease-in;
+			box-shadow: $shadow;
+			width: 280px;
+			max-width: none;
+		}
+	}
+
+	&__submenu.active {
+		display: block;
+		visibility: visible;
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	&__menu.active {
+		transform: translateX(0);
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&__motto {
+		align-self: center;
+		margin-block: 3em;
+
+		p {
+			background-color: rgba($color: $dark, $alpha: 0.1);
+			padding: 0.5em 1em;
+			font-size: 1.2rem;
+			line-height: 180%;
+			text-align: center;
+		}
+
+		@include view(mobile) {
+			display: none;
+		}
+	}
+
+	&__socials,
+	&__infos,
+	&__info,
+	&__social {
+		display: flex;
+		align-items: center;
+		align-self: center;
+	}
+
+	&__socials {
+		gap: 0.5em;
+
+		@include view(mobile) {
+			display: none;
+		}
+
+		&-top {
+			@include view(mobile) {
+				display: flex;
+			}
+		}
+	}
+
+	&__infos,
+	&__info {
+		gap: 1em;
+	}
+
+	&__info {
+		font-size: 1.3rem;
+	}
+
+	&__social {
+		padding: 0.5em;
+		fill: $red;
+
+		@include view(mobile) {
+			fill: $dark;
+			padding: 0.3em;
+		}
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+
+		@include view(mobile) {
+			flex-direction: row;
+			gap: 1em;
+			height: 100%;
+			line-height: 80px;
+		}
+	}
+
+	&__item {
+		position: relative;
+		border-bottom: 1px solid rgba($color: $dark, $alpha: 0.1);
+
+		@include view(mobile) {
+			display: block;
+			border-bottom: unset;
+			height: 100%;
+		}
+
+		&.current_page_item {
+			color: $red;
+		}
+
+		&.menu-item-has-children {
+			@include view(mobile) {
+				&:hover {
+					.nav__submenu {
+						visibility: visible;
+						opacity: 1;
+						pointer-events: auto;
+					}
+				}
+			}
+		}
+	}
+
+	&__link {
+		display: block;
+		padding: 0.5em 1em;
+		font-weight: 700;
+		text-transform: uppercase;
+
+		@include view(mobile) {
+			padding: 0em 1em;
+		}
+	}
+
+	&__arrow {
+		display: flex;
+		position: absolute;
+		right: 0;
+		justify-content: center;
+		align-items: center;
+		z-index: 100;
+		padding: 0.5em 1em;
+
+		svg {
+			g {
+				path {
+					fill: $dark;
+				}
+			}
+
+			@include view(mobile) {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		@include view(mobile) {
+			top: 50%;
+			right: -15px;
+			transform: translateY(-50%);
+			padding: 0;
+		}
+	}
+
+	&__cta {
+		display: none;
+
+		@include view(mobile) {
+			display: flex;
+			align-items: center;
+			align-self: stretch;
+			background-color: $red;
+		}
+
+		&-btn {
+			background-color: $red;
+			padding: 0 1em;
+			color: $white;
+			font-size: 2rem;
+			letter-spacing: 0.5px;
+			text-transform: uppercase;
+		}
+	}
+}
