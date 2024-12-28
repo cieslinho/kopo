@@ -1,0 +1,79 @@
+@use 'base/__mixins' as *;
+@use 'base/__variables' as *;
+
+.values {
+	@include sectionPadding;
+
+	&__boxes {
+		display: grid;
+		position: relative;
+		justify-content: center;
+		gap: 1.5em;
+		margin-top: -5em;
+
+		@include view(mobile-max) {
+			grid-template-rows: 1fr;
+			grid-template-columns: repeat(2, 1fr);
+			margin-top: -7em;
+		}
+		@include view(mobile) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	&__box {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		gap: 1.5em;
+		transition: all 0.3s;
+		box-shadow: $shadow;
+		background-color: $gray;
+		padding: 2em 1em;
+		color: $dark;
+
+		svg {
+			width: 70px;
+			height: 70px;
+			fill: $dark;
+			transition: all 0.3s;
+			path {
+				transform: scale(3);
+			}
+		}
+
+		&:nth-child(even) {
+			background-color: $red;
+			color: $white;
+
+			svg {
+				fill: $white;
+			}
+
+			@include view(mobile) {
+				transform: translateY(20px);
+			}
+		}
+
+		&:nth-child(odd) {
+			background-color: $dark;
+			color: $white;
+
+			svg {
+				fill: $white;
+			}
+		}
+	}
+
+	&__title {
+		font-size: 1.8rem;
+	}
+
+	&__number {
+		position: absolute;
+		top: 15px;
+		right: 25px;
+		color: $darkGray;
+		font-size: 2rem;
+	}
+}
