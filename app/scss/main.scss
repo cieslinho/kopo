@@ -6,4 +6,5 @@
 @use 'base/__components' as *;
 
 /* Components */
-@use 'components/_nav';
+@use 'components/__nav';
+@use 'components/__header';

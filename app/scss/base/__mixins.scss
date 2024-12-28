@@ -1,3 +1,5 @@
+@use 'base/__variables' as *;
+
 @mixin view($breakpoint) {
 	@if $breakpoint == mobile-max {
 		@media only screen and (min-width: 567px) {
@@ -45,5 +47,29 @@
 
 	@include view(tablet) {
 		padding: 3em 0;
+	}
+}
+
+@mixin btn {
+	transition: all 0.3s;
+	background-color: $white;
+	padding: 0.5em 1em;
+	color: $dark;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+
+	&:hover {
+		background-color: $dark;
+		color: $white;
+	}
+}
+
+@mixin btnCta {
+	@include btn;
+	background-color: $red;
+	color: $white;
+
+	&:hover {
+		background-color: $dark;
 	}
 }
