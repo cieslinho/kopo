@@ -55,12 +55,17 @@
 	background-color: $white;
 	padding: 0.5em 1em;
 	color: $dark;
+	font-size: 1.7rem;
 	letter-spacing: 0.5px;
 	text-transform: uppercase;
 
 	&:hover {
 		background-color: $dark;
 		color: $white;
+	}
+
+	@include view(mobile) {
+		font-size: 2rem;
 	}
 }
 
