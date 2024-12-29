@@ -4,6 +4,10 @@
 .section {
 	@include sectionPadding;
 
+	&-btn {
+		padding: 0;
+	}
+
 	&__boxes {
 		display: grid;
 		grid-template-rows: 1fr;
@@ -95,5 +99,15 @@
 		&-description {
 			font-size: 1.4rem;
 		}
+	}
+
+	&__wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__btn {
+		@include btnCta;
 	}
 }

@@ -1,0 +1,15 @@
+{
+	"name": "acf/block-btn",
+	"title": "Btn Block",
+	"description": "A custom btn block that uses ACF fields.",
+	"category": "formatting",
+	"icon": "admin-comments",
+	"keywords": ["btn block", "quote"],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "btn-block.php"
+	},
+	"supports": {
+		"anchor": true
+	}
+}

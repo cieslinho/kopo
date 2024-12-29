@@ -111,14 +111,9 @@
 	&__btn {
 		@include btn;
 
-		font-size: 1.7rem;
 
 		&-cta {
 			@include btnCta;
-		}
-
-		@include view(mobile) {
-			font-size: 2rem;
 		}
 	}
 }
