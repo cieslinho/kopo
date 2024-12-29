@@ -1,0 +1,99 @@
+@use 'base/__mixins' as *;
+@use 'base/__variables' as *;
+
+.section {
+	@include sectionPadding;
+
+	&__boxes {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 2em;
+
+		@include view(mobile) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__img {
+		height: 100%;
+		img {
+			box-shadow: $shadow;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	&__titles,
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 1em;
+	}
+
+	&__title {
+		font-weight: 700;
+		font-size: 3rem;
+		letter-spacing: 1px;
+	}
+
+	&__subheading {
+		border-bottom: 2px solid $red;
+		padding-bottom: 0.2em;
+		color: $darkGray;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	&__texts {
+		p {
+			margin-bottom: 1em;
+			font-size: 1.5rem;
+		}
+	}
+
+	&__list {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1em;
+
+		@include view(mobile) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__texts,
+	&__list {
+		line-height: 160%;
+	}
+
+	&__item {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+
+		&-title {
+			position: relative;
+			padding-left: 1.5em;
+			font-size: 1.8rem;
+			letter-spacing: 1px;
+
+			&::before {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				background-color: $red;
+				width: 10px;
+				height: 10px;
+				content: '';
+			}
+		}
+		&-description {
+			font-size: 1.4rem;
+		}
+	}
+}
