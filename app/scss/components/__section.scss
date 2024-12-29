@@ -110,4 +110,84 @@
 	&__btn {
 		@include btnCta;
 	}
+
+	&__images {
+		display: grid;
+		grid-template-rows: 1fr;
+		grid-template-columns: repeat(1, 1fr);
+		gap: 1em;
+
+		@include view(mobile) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__box {
+		display: flex;
+		position: relative;
+		flex-direction: column;
+		justify-content: flex-end;
+		align-items: flex-start;
+		box-shadow: $shadow;
+		height: 200px;
+
+		&::after {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: rgba($color: $dark, $alpha: 0.6);
+			width: 100%;
+			height: 100%;
+			content: '';
+		}
+
+		&-img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		&-link {
+			z-index: 10;
+			padding: 0.1em 1em 0.3em;
+			color: $white;
+			font-size: 1.4rem;
+		}
+
+		&-readmore {
+			position: relative;
+			z-index: 10;
+			margin: 0 0 1em 1em;
+			color: $darkGray;
+			font-size: 1.3rem;
+
+			&::after {
+				position: absolute;
+				bottom: 0px;
+				left: 0;
+				transition: all 0.5s;
+				background-color: $darkGray;
+				width: 100%;
+				height: 1px;
+				content: '';
+
+				@include view(mobile-max) {
+					width: 20%;
+				}
+			}
+
+			&:hover {
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+
+		@include view(mobile) {
+			min-width: 350px;
+		}
+	}
 }
