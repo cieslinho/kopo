@@ -6,7 +6,7 @@
 	margin-top: 77.8px;
 
 	@include view(mobile) {
-		margin-top: 139px;
+		margin-top: 130.6px;
 	}
 
 	&__images {
@@ -110,7 +110,6 @@
 
 	&__btn {
 		@include btn;
-
 
 		&-cta {
 			@include btnCta;
