@@ -5,13 +5,16 @@
 	position: fixed;
 	top: 0;
 	left: 0;
+	z-index: 200000;
+	box-shadow: $shadow;
+	background-color: $white;
 	width: 100%;
 
 	.container {
 		max-width: unset;
 
 		@include view(mobile) {
-			padding-inline: unset;
+			padding: 0;
 		}
 	}
 
@@ -344,6 +347,7 @@
 
 	&__cta {
 		display: none;
+		transition: all 0.3s;
 
 		@include view(mobile) {
 			display: flex;
@@ -352,7 +356,16 @@
 			background-color: $red;
 		}
 
+		&:hover {
+			background-color: $dark;
+
+			.nav__cta-btn {
+				background-color: $dark;
+			}
+		}
+
 		&-btn {
+			transition: all 0.3s;
 			background-color: $red;
 			padding: 0 1em;
 			color: $white;
