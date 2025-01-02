@@ -9,5 +9,6 @@ function register_acf_blocks() {
     register_block_type( __DIR__ . '/block/section-right-block' );
     register_block_type( __DIR__ . '/block/contact-block' );
     register_block_type( __DIR__ . '/block/map-block' );
+    register_block_type( __DIR__ . '/block/breadcrumbs-block' );
 }
 ?>
